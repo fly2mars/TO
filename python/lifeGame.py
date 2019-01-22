@@ -23,15 +23,13 @@ class KnowlegeEngine():
         self.facts = {}
         return
     def reset(self):
-        pass
-    
+        pass    
     def add_rules(self, *rule):
         pass
     def add_fact(self, **kwargs):
         pass
     def inference(self):
-        
-        return
+        pass
     def status(self):
         print("Facts:")
         i = 0
@@ -45,11 +43,8 @@ class Agent:
     def __init__(self, ke, env):
         #set global KB engine and enviorment
         self.ke = ke
-        self.env = env
-        
+        self.env = env        
         self.pos = [0,0]
-        self.total = 0
-        
         return
     def bind_pos(self, pos):
         self.pos = pos
@@ -173,6 +168,3 @@ def test_MAS():
     
 if __name__ == '__main__':
     test_MAS()
-
-
- 

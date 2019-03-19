@@ -90,8 +90,8 @@ def OC(nelx, nely, xPhys, volfrac, dc, ft):
             
 
 if __name__ == '__main__':
-    Max_Loop = 1
-    nelx,nely = [4,3]
+    Max_Loop = 100
+    nelx,nely = [60,20]
     volfrac = 0.5
     penal = 3.0
     rmin = 1.2 
@@ -116,7 +116,7 @@ if __name__ == '__main__':
 
     ## design variables
     x = np.tile(volfrac,(nely,nelx))
-    xPhys = x;
+    xPhys = x#.copy();
 
     KE = generate_stiffness_mat(nu)
     H, Hs = preFilter(rmin)

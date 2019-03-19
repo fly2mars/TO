@@ -84,6 +84,7 @@ def main(nelx,nely,volfrac,penal,rmin,ft):
     while change>0.01 and loop<100:
         loop=loop+1
         # Setup and solve FE problem
+        print(xPhys.shape)
         sK=((KE.flatten()[np.newaxis]).T*(Emin+(xPhys)**penal*(Emax-Emin))).flatten(order='F')
         K = coo_matrix((sK,(iK,jK)),shape=(ndof,ndof)).tocsc()
         # Remove constrained dofs from matrix

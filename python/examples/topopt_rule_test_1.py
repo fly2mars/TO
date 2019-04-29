@@ -12,7 +12,7 @@ def msg(func_name, *paras):
     print(func_name)
     for p in paras:
         print(p)
-        
+
 # MAIN DRIVER
 def main(nelx,nely,volfrac,penal,rmin,ft):
     print("Minimum compliance problem with OC")
@@ -25,7 +25,8 @@ def main(nelx,nely,volfrac,penal,rmin,ft):
     # dofs:
     ndof = 2*(nelx+1)*(nely+1)
     # Allocate design variables (as array), initialize and allocate sens.
-    x=volfrac * np.ones(nely*nelx,dtype=float)
+    #x=volfrac * np.ones(nely*nelx,dtype=float)
+    x=np.ones(nely*nelx,dtype=float)
     xold=x.copy()
     xPhys=x.copy()
     g=0 # must be initialized to use the NGuyen/Paulino OC approach
@@ -88,7 +89,7 @@ def main(nelx,nely,volfrac,penal,rmin,ft):
     dv = np.ones(nely*nelx)
     dc = np.ones(nely*nelx)
     ce = np.ones(nely*nelx)
-    while change>0.01 and loop<100:
+    while change>0.01 and loop<20:
         loop=loop+1
         # Setup and solve FE problem
         
@@ -112,7 +113,8 @@ def main(nelx,nely,volfrac,penal,rmin,ft):
             dv[:] = np.asarray(H*(dv[np.newaxis].T/Hs))[:,0]
         # Optimality criteria
         xold[:]=x
-        (x[:],g)=oc(nelx,nely,x,volfrac,dc,dv,g)
+        #(x[:],g)=oc(nelx,nely,x,volfrac,dc,dv,g)
+        (x[:],g) = update(nelx,nely,x,volfrac,dc,dv,g)
         # Filter design variables
         if ft==0: xPhys[:]=x
         elif ft==1: xPhys[:]=np.asarray(H*x[np.newaxis].T/Hs)[:,0]
@@ -124,12 +126,12 @@ def main(nelx,nely,volfrac,penal,rmin,ft):
         plt.pause(0.05)
 
         # Write iteration history to screen (req. Python 2.6 or newer)
-        print("it.: {0} , obj.: {1:.3f} Vol.: {2:.3f}, ch.: {3:.3f}".format(\
-                    loop,obj,(g+volfrac*nelx*nely)/(nelx*nely),change))
+        #print("it.: {0} , obj.: {1:.3f} Vol.: {2:.3f}, ch.: {3:.3f}".format(\
+        #            loop,obj,(g+volfrac*nelx*nely)/(nelx*nely),change))
     # Make sure the plot stays and that the shell remains    
-    plt.savefig("r:/topy.png", dpi=100)
+    plt.savefig("r:/topy-test.png", dpi=100)
     fig.canvas.draw()
-    input("Press any key...")
+    #input("Press any key...")
 #element stiffness matrix
 def lk():
     E=1
@@ -144,6 +146,14 @@ def lk():
     [k[6], k[3], k[4], k[1], k[2], k[7], k[0], k[5]],
     [k[7], k[2], k[1], k[4], k[3], k[6], k[5], k[0]] ]);
     return (KE)
+
+# Rule based update
+def update(nelx, nely, x, volfrac, dc, dv, g):
+    move = 0.1    
+    gt = []
+    xnew=np.zeros(nelx*nely)
+    xnew[:]= np.maximum(0.0,np.maximum(x-move,np.minimum(1.0,np.minimum(x+move,x*np.sqrt(-dc/dv)))))
+    return xnew, gt
 # Optimality criterion
 def oc(nelx,nely,x,volfrac,dc,dv,g):
     l1=0
@@ -177,3 +187,22 @@ if __name__ == "__main__":
     if len(sys.argv)>5: penal =float(sys.argv[5])
     if len(sys.argv)>6: ft =int(sys.argv[6])
     main(nelx,nely,volfrac,penal,rmin,ft)
+    
+    # Show figure
+    x = np.linspace(-2, 2, 200)
+    psi = lambda n,x: 1.0/np.sqrt((2**n*(n+1)*np.sqrt(np.pi))) * np.exp(-x**2/2.0) * n/x
+    
+    def show_figure(x,y,title, label):
+        plt.figure()
+        plt.plot(x, y, label=r"$\psi_" + str(1)+r"(x)$")
+        
+        plt.grid(True)
+        plt.axis([-3, 3, -1, 1])
+        plt.xlabel(r"$x$")
+        plt.xlabel(r"$y$")
+        plt.legend(loc="lower right")
+        plt.title(title)  
+        plt.show()
+        plt.savefig("r:/topy-test.png", dpi=100)
+        
+    show_figure(x, psi(1,x), r"Hermite functions $\psi_n$", r"$\psi_")        

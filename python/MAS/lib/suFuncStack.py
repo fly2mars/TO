@@ -1,12 +1,21 @@
 ################################################
-#A data structure for computing time serias, 
+#Some class for computing time serias.
 #  eg. convergence.
 ################################################
 import collections
 import numpy as np
 import copy
 
+
 class data_stack():
+    '''
+    A stack for first in first out, which always hold max_len items
+    example:
+           ds = data_stack(5)
+           ds.add(1.0)
+           ....
+           ds.mean()
+    '''
     def __init__(self,max_len):
         self.max_len = max_len
         self.data = collections.deque()
@@ -27,10 +36,11 @@ class data_stack():
         return s / self.len()
     def flush(self):
         print(self.data)
+        
 class convergence():
     '''
-    return line data for showing a convergence trend with iteration times
-    @max_len is used to compute a mean value
+    return 2D points(conv, iter) for showing convergence trend.
+    @max_len is the length of a time window.
     '''
     def __init__(self, max_len):
         self.diffs = data_stack(max_len)
@@ -49,6 +59,7 @@ class convergence():
         
     def get_data(self):
         return self.listx, self.listy
+    # compare difference between two matrix
     def compute_convergence(self, total_max):        
         if self.data.len() == 0:
             return 0
@@ -66,3 +77,4 @@ if __name__ == "__main__":
         d.flush()
         print(d.mean())
         
+ 

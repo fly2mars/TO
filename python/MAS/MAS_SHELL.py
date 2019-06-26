@@ -1,7 +1,14 @@
 """
 A simple multi-agent evolution design demo
 
+Usage:
+MAS_SHELL.py --x 20 --y 10
+
 TODO:
+  Add an evaluator object
+  Add an UI
+  Add fact & rules serialization 
+  Add convergence checking in the environment class
 
 Reference:
 1. CLIPs http://pyclips.sourceforge.net/web/
@@ -17,11 +24,7 @@ import matplotlib.animation as animation
 from lib import suFuncStack
 from env.envShell import *
 from ke.ke_shell import *
-from ke.worker import *
-
-#TODO:
-# Add evaluator
-# Add global variable to env.params
+from ke.agent_shell import *
 
 
 #Global object

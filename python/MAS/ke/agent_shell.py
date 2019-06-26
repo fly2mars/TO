@@ -65,7 +65,7 @@ class Shell_Agent(Agent):
         
         self.ke.reset()
         self.ke.add_facts(fs)
-        print(self.ke.facts)
+        #print(self.ke.facts)
         self.ke.run()
         return
     
@@ -95,7 +95,7 @@ class Shell_Agent(Agent):
                 set_energy(self.env, self.pos, self.env.get_param('max_pixel')/ self.env.get_param('scale_para'))
                 
 
-        print(self.pos)
-        print(self.ke.answers)
+        #print(self.pos)
+        #print(self.ke.answers)
         #print(self.env.grid_prop_pos_energy)
         return

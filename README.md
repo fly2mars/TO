@@ -1,1 +1,1 @@
-# SIMP
+# Some topology optimization codes and renference materials.

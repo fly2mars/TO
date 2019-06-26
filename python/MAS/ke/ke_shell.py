@@ -1,6 +1,6 @@
 """
 Knowledge engine for A shell problem
-TODO: many many things...
+Making shell in 3 steps.
 Facts:
    step = {number}
    pos_energy = {number} -1: not init   0: edge   >0: inside

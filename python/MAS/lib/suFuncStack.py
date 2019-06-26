@@ -22,7 +22,7 @@ class data_stack():
     def len(self):
         return len(self.data)
     def add_data(self,d):        
-        if(len(self.data) > self.max_len):
+        if(len(self.data) == self.max_len):
             self.data.popleft()        
         self.data.append(copy.deepcopy(d))        
     def mean(self):
@@ -52,20 +52,29 @@ class convergence():
         total_max is the max sum of input data, eg. for np.ones([3,3]), the sum_total = 9.
         '''                      
         self.data.add_data(y)
+        self.total_max = total_max
         congv = self.compute_convergence(total_max)
-        self.diffs.add_data(congv)
+        self.diffs.add_data(abs(congv))
         self.listy.append(self.diffs.mean())
         self.listx.append(x)  
-        
+    
+    def is_convergence(self):
+        mean = self.diffs.mean()
+        print(mean)
+        if mean < 0.00001:
+            return True
+        return False
+    
     def get_data(self):
         return self.listx, self.listy
     # compare difference between two matrix
     def compute_convergence(self, total_max):        
-        if self.data.len() == 0:
+        length = self.data.len() 
+        if length == 0:
             return 0
-        if self.data.len() < 2:
+        if length < 2:
             return np.sum(self.data.data[0]) / total_max
-        diff = np.sum(abs(self.data.data[1] - self.data.data[0])) / total_max
+        diff = np.sum(self.data.data[1] - self.data.data[0]) / total_max
         
         return diff
 

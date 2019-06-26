@@ -1,4 +1,4 @@
-ON = 255
+ON = 200
 OFF = 0
 
 class Agent:

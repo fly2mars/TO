@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="imgs">
+    <file>imgs/splash.png</file>
+    <file>imgs/pause.png</file>
+    <file>imgs/start.gif</file>
+    <file>imgs/stop.png</file>
+  </qresource>
+</RCC>

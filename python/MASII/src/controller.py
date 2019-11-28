@@ -42,9 +42,12 @@ class Controller(object):
    
 
     @unimplemented        
-    def load_model(self, file_path):
+    def load_mesh(self, file_path):
         pass
     
+    @unimplemented        
+    def load_inp(self, file_path):
+        pass    
         
     @unimplemented
     def save_config(self):        

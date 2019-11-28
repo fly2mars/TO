@@ -2,9 +2,12 @@
 
 # BASIC INPUTS:
 path = "."  # path to the working directory where the initial file is located
-path_export = "r:/temp_beso"
-path_image = "r:/images"
-file_name = "r:/testData/MBB_L2_C2.inp"
+#path_export = "r:/temp_beso"
+#path_image = "r:/images"
+#file_name = "r:/testData/MBB_L2_C2.inp"
+path_export = "e:/tmp"
+path_image = "e:/tmp/images"
+file_name = "e:/tmp/MBB_L2_C2.inp"
 #file_name = "r:/testData/Plane_Mesh.inp"  # file with prepared linear static analysis
 
 # FEA TOOLS

@@ -44,6 +44,7 @@ class Viewer(Ui_MainWindow):
     def _connect_signals(self, MainWindow):
         # menu action        
         self.action_exit.triggered.connect(self.app_quit)
+        self.action_open.triggered.connect(self.load_file)
         self.action_about.triggered.connect(self.about)        
         
         # button action        
@@ -77,8 +78,10 @@ class Viewer(Ui_MainWindow):
             ext_file = path.splitext(fname[0])[1]
             if  ext_file in fname[1]:                
                 logging.info("Load " + fname[0])
-                if ext_file == '.path':
-                    self.controller.load_model(fname[0])
+                if ext_file == '.stl':
+                    self.controller.load_mesh(fname[0])
+                if ext_file == '.inp':
+                    self.controller.load_inp(fname[0])
             else:
                 return        
        

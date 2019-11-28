@@ -2,13 +2,11 @@
 
 # Form implementation generated from reading ui file 'main_window.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.1
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -26,22 +24,22 @@ class Ui_MainWindow(object):
         self.groupBox.setGeometry(QtCore.QRect(10, 430, 651, 321))
         self.groupBox.setObjectName("groupBox")
         self.listView_3 = QtWidgets.QListView(self.groupBox)
-        self.listView_3.setGeometry(QtCore.QRect(10, 30, 271, 271))
+        self.listView_3.setGeometry(QtCore.QRect(10, 70, 271, 241))
         self.listView_3.setObjectName("listView_3")
         self.pushButton_2 = QtWidgets.QPushButton(self.groupBox)
-        self.pushButton_2.setGeometry(QtCore.QRect(414, 265, 93, 28))
+        self.pushButton_2.setGeometry(QtCore.QRect(414, 284, 93, 28))
         self.pushButton_2.setObjectName("pushButton_2")
         self.pushButton_4 = QtWidgets.QPushButton(self.groupBox)
-        self.pushButton_4.setGeometry(QtCore.QRect(521, 265, 93, 28))
+        self.pushButton_4.setGeometry(QtCore.QRect(521, 284, 93, 28))
         self.pushButton_4.setObjectName("pushButton_4")
         self.textBrowser = QtWidgets.QTextBrowser(self.groupBox)
-        self.textBrowser.setGeometry(QtCore.QRect(300, 70, 341, 171))
+        self.textBrowser.setGeometry(QtCore.QRect(300, 70, 341, 201))
         self.textBrowser.setObjectName("textBrowser")
         self.pushButton_5 = QtWidgets.QPushButton(self.groupBox)
         self.pushButton_5.setGeometry(QtCore.QRect(370, 30, 118, 28))
         self.pushButton_5.setObjectName("pushButton_5")
         self.comboBox_4 = QtWidgets.QComboBox(self.groupBox)
-        self.comboBox_4.setGeometry(QtCore.QRect(300, 270, 101, 22))
+        self.comboBox_4.setGeometry(QtCore.QRect(300, 289, 101, 22))
         self.comboBox_4.setObjectName("comboBox_4")
         self.comboBox_4.addItem("")
         self.comboBox_4.addItem("")
@@ -55,6 +53,15 @@ class Ui_MainWindow(object):
         self.comboBox_11.addItem("")
         self.comboBox_11.addItem("")
         self.comboBox_11.addItem("")
+        self.comboBox_5 = QtWidgets.QComboBox(self.groupBox)
+        self.comboBox_5.setGeometry(QtCore.QRect(80, 30, 196, 22))
+        self.comboBox_5.setObjectName("comboBox_5")
+        self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
+        self.comboBox_5.addItem("")
+        self.label_2 = QtWidgets.QLabel(self.groupBox)
+        self.label_2.setGeometry(QtCore.QRect(11, 34, 72, 15))
+        self.label_2.setObjectName("label_2")
         self.groupBox_3 = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox_3.setGeometry(QtCore.QRect(10, 10, 651, 231))
         self.groupBox_3.setObjectName("groupBox_3")
@@ -73,6 +80,10 @@ class Ui_MainWindow(object):
         self.comboBox = QtWidgets.QComboBox(self.groupBox_3)
         self.comboBox.setGeometry(QtCore.QRect(450, 160, 101, 22))
         self.comboBox.setObjectName("comboBox")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
+        self.comboBox.addItem("")
         self.lineEdit = QtWidgets.QLineEdit(self.groupBox_3)
         self.lineEdit.setGeometry(QtCore.QRect(300, 160, 111, 21))
         self.lineEdit.setObjectName("lineEdit")
@@ -185,7 +196,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "suTO"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "RMEC RDesigner"))
         self.groupBox.setTitle(_translate("MainWindow", "规则"))
         self.pushButton_2.setText(_translate("MainWindow", "添加"))
         self.pushButton_4.setText(_translate("MainWindow", "删除"))
@@ -197,9 +208,17 @@ class Ui_MainWindow(object):
         self.comboBox_11.setItemText(0, _translate("MainWindow", "与"))
         self.comboBox_11.setItemText(1, _translate("MainWindow", "或"))
         self.comboBox_11.setItemText(2, _translate("MainWindow", "非"))
+        self.comboBox_5.setItemText(0, _translate("MainWindow", "硬性规则"))
+        self.comboBox_5.setItemText(1, _translate("MainWindow", "可废止规则"))
+        self.comboBox_5.setItemText(2, _translate("MainWindow", "废止者"))
+        self.label_2.setText(_translate("MainWindow", "规则库："))
         self.groupBox_3.setTitle(_translate("MainWindow", "事实"))
         self.pushButton.setText(_translate("MainWindow", "添加"))
         self.pushButton_3.setText(_translate("MainWindow", "删除"))
+        self.comboBox.setItemText(0, _translate("MainWindow", ">"))
+        self.comboBox.setItemText(1, _translate("MainWindow", "<"))
+        self.comboBox.setItemText(2, _translate("MainWindow", "="))
+        self.comboBox.setItemText(3, _translate("MainWindow", "func:=name"))
         self.label.setText(_translate("MainWindow", "环境变量"))
         self.pushButton_16.setText(_translate("MainWindow", "+"))
         self.pb_start.setText(_translate("MainWindow", "优化"))
@@ -218,5 +237,6 @@ class Ui_MainWindow(object):
         self.action_exit.setText(_translate("MainWindow", "退出"))
         self.action_about.setText(_translate("MainWindow", "关于"))
         self.action_printer_setting.setText(_translate("MainWindow", "打印机设置..."))
+
 from pyqtgraph.opengl.GLViewWidget import GLViewWidget
 import resource_rc

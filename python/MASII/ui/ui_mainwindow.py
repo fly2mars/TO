@@ -2,11 +2,13 @@
 
 # Form implementation generated from reading ui file 'main_window.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -85,7 +87,7 @@ class Ui_MainWindow(object):
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.lineEdit = QtWidgets.QLineEdit(self.groupBox_3)
-        self.lineEdit.setGeometry(QtCore.QRect(300, 160, 111, 21))
+        self.lineEdit.setGeometry(QtCore.QRect(300, 160, 131, 21))
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit_2 = QtWidgets.QLineEdit(self.groupBox_3)
         self.lineEdit_2.setGeometry(QtCore.QRect(560, 160, 81, 21))
@@ -93,9 +95,6 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.groupBox_3)
         self.label.setGeometry(QtCore.QRect(300, 20, 72, 15))
         self.label.setObjectName("label")
-        self.pushButton_16 = QtWidgets.QPushButton(self.groupBox_3)
-        self.pushButton_16.setGeometry(QtCore.QRect(415, 160, 31, 22))
-        self.pushButton_16.setObjectName("pushButton_16")
         self.pb_start = QtWidgets.QPushButton(self.centralwidget)
         self.pb_start.setEnabled(False)
         self.pb_start.setGeometry(QtCore.QRect(40, 760, 101, 41))
@@ -158,6 +157,9 @@ class Ui_MainWindow(object):
         self.groupBox_4.raise_()
         self.groupBox_5.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1335, 26))
         self.menubar.setObjectName("menubar")
@@ -170,22 +172,22 @@ class Ui_MainWindow(object):
         self.menu_3 = QtWidgets.QMenu(self.menubar)
         self.menu_3.setObjectName("menu_3")
         MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
         self.action_open = QtWidgets.QAction(MainWindow)
         self.action_open.setObjectName("action_open")
         self.action_exit = QtWidgets.QAction(MainWindow)
         self.action_exit.setObjectName("action_exit")
         self.action_about = QtWidgets.QAction(MainWindow)
         self.action_about.setObjectName("action_about")
-        self.action_printer_setting = QtWidgets.QAction(MainWindow)
-        self.action_printer_setting.setObjectName("action_printer_setting")
+        self.action_re_setting = QtWidgets.QAction(MainWindow)
+        self.action_re_setting.setObjectName("action_re_setting")
+        self.action_rule_load = QtWidgets.QAction(MainWindow)
+        self.action_rule_load.setObjectName("action_rule_load")
         self.menu.addAction(self.action_open)
         self.menu.addSeparator()
         self.menu.addAction(self.action_exit)
         self.menu_about.addAction(self.action_about)
-        self.menu_2.addAction(self.action_printer_setting)
+        self.menu_2.addAction(self.action_re_setting)
+        self.menu_2.addAction(self.action_rule_load)
         self.menubar.addAction(self.menu.menuAction())
         self.menubar.addAction(self.menu_2.menuAction())
         self.menubar.addAction(self.menu_3.menuAction())
@@ -220,7 +222,6 @@ class Ui_MainWindow(object):
         self.comboBox.setItemText(2, _translate("MainWindow", "="))
         self.comboBox.setItemText(3, _translate("MainWindow", "func:=name"))
         self.label.setText(_translate("MainWindow", "环境变量"))
-        self.pushButton_16.setText(_translate("MainWindow", "+"))
         self.pb_start.setText(_translate("MainWindow", "优化"))
         self.pb_pause.setText(_translate("MainWindow", "暂停"))
         self.pb_stop.setText(_translate("MainWindow", "停止"))
@@ -236,7 +237,7 @@ class Ui_MainWindow(object):
         self.action_open.setText(_translate("MainWindow", "打开.."))
         self.action_exit.setText(_translate("MainWindow", "退出"))
         self.action_about.setText(_translate("MainWindow", "关于"))
-        self.action_printer_setting.setText(_translate("MainWindow", "打印机设置..."))
-
+        self.action_re_setting.setText(_translate("MainWindow", "引擎设置..."))
+        self.action_rule_load.setText(_translate("MainWindow", "装入规则..."))
 from pyqtgraph.opengl.GLViewWidget import GLViewWidget
 import resource_rc

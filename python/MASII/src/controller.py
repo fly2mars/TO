@@ -78,10 +78,12 @@ class Controller(object):
     @unimplemented        
     def load_mesh(self, file_path):
         pass
-    
-    @unimplemented        
+              
     def load_inp(self, file_path):
-        self.volume_model.load(file_path)        
+        self.volume_model.load(file_path) 
+        #v = gl.GLVolumeItem(d2)
+        #v.translate(-50,-50,-100)
+        self.main_window.w.addItem(v)        
         self.show_model()
         pass
     

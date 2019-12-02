@@ -2,11 +2,13 @@
 
 # Form implementation generated from reading ui file 'about.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.2
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_AboutDialog(object):
     def setupUi(self, AboutDialog):
@@ -46,5 +48,4 @@ class Ui_AboutDialog(object):
         self.label_3.setText(_translate("AboutDialog", "上海大学快速制造工程中心"))
         self.label_4.setText(_translate("AboutDialog", "<a href=\"http://www.rmec.shu.edu.cn\">http://www.rmec.shu.edu.cn</a>"))
         self.cb_OK.setText(_translate("AboutDialog", "确定"))
-
 import resource_rc

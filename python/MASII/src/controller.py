@@ -26,7 +26,10 @@ class VolumeModel(object):
     def __init__(self):
         self.nodes = None
         self.elements = None
+        self.constraint_nodes = None  # node index
+        self.load_nodes = None        # node index
         self.elset_name = "SolidMaterialElementGeometry2D"   # string with name of the element set in .inp file
+        
         
     def load(self, file_path):
         domain_optimized = {}   
@@ -37,6 +40,10 @@ class VolumeModel(object):
         [self.nodes, self.Elements, self.domains, self.opt_domains, en_all,
          plane_strain, plane_stress, axisymmetry] = utils.beso_lib.import_inp(
              file_path, domains_from_config, domain_optimized, shells_as_composite)
+        
+        self.load_nodes = list(np.array(list(utils.beso_lib.import_inp_load(file_path).keys())) - 1)  # index from 1 to 0 
+        self.constraint_nodes = list(np.array(utils.beso_lib.import_inp_boundary(file_path)) - 1)     # index from 1 to 0
+        
     def get_nodes(self):
         nodes = []
         if self.nodes is not None:
@@ -53,9 +60,7 @@ class VolumeModel(object):
         return bbox
         
         
-        
-        
-        
+               
 
 class Controller(object):
     def __init__(self, main_window):
@@ -95,8 +100,11 @@ class Controller(object):
         colors = np.zeros((size, 4))
         colors[:,3] = 0.9
         colors[:,0] = 1.0
+        
+        colors[self.volume_model.constraint_nodes] = [1,1,1,0.9]
+        colors[self.volume_model.load_nodes] = [1,1,0,0.9]
         nds = gl.GLScatterPlotItem(pos=nodes, color = colors, size=0.9, pxMode = False)
-            
+        
         self.main_window.model_view.addItem(nds)        
         self.main_window.repaint()    
         

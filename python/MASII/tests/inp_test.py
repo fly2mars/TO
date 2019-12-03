@@ -25,8 +25,8 @@ class TestClass(unittest.TestCase):
         [nodes, Elements, domains, opt_domains, en_all, plane_strain, plane_stress, axisymmetry] = utils.beso_lib.import_inp(
                                                   file_name, domains_from_config, domain_optimized, shells_as_composite)
         
-        load_nodes = utils.beso_lib.import_inp_load(file_name)
-        boundary_node_indexes = utils.beso_lib.import_inp_boundary(file_name) 
+        load_nodes = utils.beso_lib.import_inp_load(file_name) - 1
+        boundary_node_indexes = utils.beso_lib.import_inp_boundary(file_name)  - 1
         
         
         np_nodes = np.array(list(nodes.values()))

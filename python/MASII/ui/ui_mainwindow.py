@@ -2,13 +2,11 @@
 
 # Form implementation generated from reading ui file 'main_window.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.1
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -137,10 +135,10 @@ class Ui_MainWindow(object):
         self.groupBox_4 = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox_4.setGeometry(QtCore.QRect(680, 10, 641, 511))
         self.groupBox_4.setObjectName("groupBox_4")
-        self.mode_view = GLViewWidget(self.groupBox_4)
-        self.mode_view.setGeometry(QtCore.QRect(10, 30, 621, 461))
-        self.mode_view.setCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
-        self.mode_view.setObjectName("mode_view")
+        self.model_view = GLViewWidget(self.groupBox_4)
+        self.model_view.setGeometry(QtCore.QRect(10, 30, 621, 461))
+        self.model_view.setCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
+        self.model_view.setObjectName("model_view")
         self.groupBox_5 = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox_5.setGeometry(QtCore.QRect(680, 530, 641, 161))
         self.groupBox_5.setObjectName("groupBox_5")
@@ -239,5 +237,6 @@ class Ui_MainWindow(object):
         self.action_about.setText(_translate("MainWindow", "关于"))
         self.action_re_setting.setText(_translate("MainWindow", "引擎设置..."))
         self.action_rule_load.setText(_translate("MainWindow", "装入规则..."))
+
 from pyqtgraph.opengl.GLViewWidget import GLViewWidget
 import resource_rc

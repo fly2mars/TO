@@ -472,7 +472,7 @@
     <property name="title">
      <string>模型</string>
     </property>
-    <widget class="GLViewWidget" name="mode_view">
+    <widget class="GLViewWidget" name="model_view">
      <property name="geometry">
       <rect>
        <x>10</x>

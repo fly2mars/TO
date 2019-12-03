@@ -37,7 +37,11 @@ class VolumeModel(object):
         [self.nodes, self.Elements, self.domains, self.opt_domains, en_all,
          plane_strain, plane_stress, axisymmetry] = utils.beso_lib.import_inp(
              file_path, domains_from_config, domain_optimized, shells_as_composite)
-        
+    def get_nodes(self):
+        nodes = []
+        if self.nodes is not None:
+            return np.array(list(self.nodes.values()))
+            
         
     def bbox(self):
         bbox = np.zeros([2,3])
@@ -80,16 +84,21 @@ class Controller(object):
         pass
               
     def load_inp(self, file_path):
-        self.volume_model.load(file_path) 
-        #v = gl.GLVolumeItem(d2)
-        #v.translate(-50,-50,-100)
-        self.main_window.w.addItem(v)        
+        self.volume_model.load(file_path)                 
         self.show_model()
         pass
     
     @unimplemented
-    def show_model(self):        
-        pass    
+    def show_model(self):   
+        nodes = self.volume_model.get_nodes()
+        size = nodes.shape[0]
+        colors = np.zeros((size, 4))
+        colors[:,3] = 0.9
+        colors[:,0] = 1.0
+        nds = gl.GLScatterPlotItem(pos=nodes, color = colors, size=0.9, pxMode = False)
+            
+        self.main_window.model_view.addItem(nds)        
+        self.main_window.repaint()    
         
     @unimplemented
     def save_config(self):        

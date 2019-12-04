@@ -23,8 +23,7 @@ class Viewer(Ui_MainWindow):
                 
         self.controller = Controller(self)   
         self.progress = 0
-        self.timer = QBasicTimer()
-        
+        self.timer = QBasicTimer()        
         
         
     
@@ -45,7 +44,9 @@ class Viewer(Ui_MainWindow):
         # menu action        
         self.action_exit.triggered.connect(self.app_quit)
         self.action_open.triggered.connect(self.load_file)
-        self.action_about.triggered.connect(self.about)        
+        self.action_about.triggered.connect(self.about)      
+        
+        self.dview_variables.cellClicked.connect(self.controller.update_cur_fact)
         
         # button action        
         #self.pb_start.clicked.connect(self.b_start)
@@ -71,7 +72,7 @@ class Viewer(Ui_MainWindow):
     
     def load_file(self):
         fname = QFileDialog.getOpenFileName(self, 'Open file', '', 
-                                            "mesh model (*.stl);; volume data (*.inp);")
+                                            "volume data (*.inp);; mesh model (*.stl);")
         for s in fname:
             logging.debug(s)
         if fname[0]:

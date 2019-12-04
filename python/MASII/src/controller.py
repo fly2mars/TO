@@ -60,8 +60,53 @@ class VolumeModel(object):
         return bbox
         
         
-               
-
+class suEnv(object):
+    def __init__(self):
+        self.v_model = None        
+        self.vs = {}    # states of environment
+        self.vs['step'] = 0                  # number of interation
+        self.vs['is_convergence'] = False    
+        self.vs['pos_energy'] = np.array([])
+        self.vs['ele_von_mice'] = np.array([])
+        self.vs['material'] = {}
+                
+        pass
+    
+    def build_from(self, volume_model):
+        '''
+        bind with a VolumeModel 
+        '''
+        self.v_model = volume_model
+        pass
+    
+    def envolve(self, param={}, engine_name=None):
+        '''
+        1. send environment and rules to engine
+        2. envolve by engine
+        3. read result model
+        '''
+        logging.info("envolve...")
+        logging.info("envolve by engine")
+        logging.info("read result model")
+        
+        
+    def envolve_internal(self, engine_name=None):
+        pass
+        
+    def get_variables(self):      
+        v_dict = {}
+        for k in self.vs.keys():
+            v_dict[k] = type(self.vs[k])
+            
+        return v_dict
+    
+    def import_from_file(self, file_path):
+        pass
+    
+    def export_to_file(self,file_path):
+        pass
+    
+   
 class Controller(object):
     def __init__(self, main_window):
         '''
@@ -69,8 +114,10 @@ class Controller(object):
         '''
         self.main_window = main_window
         self.volume_model = VolumeModel()
+        self.env = suEnv()
         
         #self.load_setting()
+        self.cur_fact = {'variable': '', 'function': 0, 'value': '' }
         
     def load_setting(self):        
         '''
@@ -106,6 +153,10 @@ class Controller(object):
         nds = gl.GLScatterPlotItem(pos=nodes, color = colors, size=0.9, pxMode = False)
         
         self.main_window.model_view.addItem(nds)        
+        
+        #
+        self.main_window.dview_variables.bind_data(self.env.get_variables())
+        
         self.main_window.repaint()    
         
     @unimplemented
@@ -120,5 +171,27 @@ class Controller(object):
         except Exception as e:
             logging.info(traceback.format_exc())
         return    
+    
+    #############################################
+    #       UI functions
+    #############################################
+    def update_cur_fact(self):
+        table = self.main_window.dview_variables
+        rows = list(set(index.row() for index in
+                      table.selectedIndexes())) 
+        if len(rows) == 0:
+            return
+        row = rows[0]      
+        model = table.model()
+        index = model.index(row, 0)
+        key = str(model.data(index))
+        self.cur_fact['variable'] = key
+        self.main_window.line_edit_state.setText(self.cur_fact['variable'])
+        #self.cur_fact['function'] = str(self.main_window.comb_variable_to_fact_func.currentText() )
+        #self.cur_fact['value'] = self.main_window.line_edit_state_value.text()
+        logging.info(self.cur_fact) 
+      
+        
+        
     
     

@@ -40,16 +40,6 @@
     <property name="title">
      <string>规则</string>
     </property>
-    <widget class="QListView" name="listView_3">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>70</y>
-       <width>271</width>
-       <height>241</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_2">
      <property name="geometry">
       <rect>
@@ -76,7 +66,7 @@
       <string>删除</string>
      </property>
     </widget>
-    <widget class="QTextBrowser" name="textBrowser">
+    <widget class="QTextBrowser" name="textBrowser_rule">
      <property name="geometry">
       <rect>
        <x>300</x>
@@ -200,6 +190,19 @@
       <string>规则库：</string>
      </property>
     </widget>
+    <widget class="DictView" name="dview_rules">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>60</y>
+       <width>271</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
@@ -226,16 +229,6 @@
       <string>添加</string>
      </property>
     </widget>
-    <widget class="QListView" name="listView_fact">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>271</width>
-       <height>201</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_3">
      <property name="geometry">
       <rect>
@@ -249,22 +242,12 @@
       <string>删除</string>
      </property>
     </widget>
-    <widget class="QListView" name="listView_variable">
-     <property name="geometry">
-      <rect>
-       <x>300</x>
-       <y>40</y>
-       <width>341</width>
-       <height>111</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QComboBox" name="comboBox">
+    <widget class="QComboBox" name="comb_variable_to_fact_func">
      <property name="geometry">
       <rect>
        <x>450</x>
        <y>160</y>
-       <width>101</width>
+       <width>91</width>
        <height>22</height>
       </rect>
      </property>
@@ -289,7 +272,10 @@
       </property>
      </item>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="line_edit_state">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>300</x>
@@ -299,7 +285,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="line_edit_state_value">
      <property name="geometry">
       <rect>
        <x>560</x>
@@ -320,6 +306,32 @@
      </property>
      <property name="text">
       <string>环境变量</string>
+     </property>
+    </widget>
+    <widget class="DictView" name="dview_variables">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>40</y>
+       <width>341</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
+     </property>
+    </widget>
+    <widget class="DictView" name="dview_facts">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>271</width>
+       <height>201</height>
+      </rect>
      </property>
     </widget>
    </widget>
@@ -413,26 +425,6 @@
     <property name="title">
      <string>动作</string>
     </property>
-    <widget class="QListView" name="listView_7">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>271</width>
-       <height>151</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QListView" name="listView_8">
-     <property name="geometry">
-      <rect>
-       <x>300</x>
-       <y>20</y>
-       <width>341</width>
-       <height>121</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_17">
      <property name="geometry">
       <rect>
@@ -457,6 +449,26 @@
      </property>
      <property name="text">
       <string>删除</string>
+     </property>
+    </widget>
+    <widget class="DictView" name="dview_acts">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>271</width>
+       <height>151</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser_act">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>10</y>
+       <width>341</width>
+       <height>131</height>
+      </rect>
      </property>
     </widget>
    </widget>
@@ -591,6 +603,11 @@
    <class>GLViewWidget</class>
    <extends>QOpenGLWidget</extends>
    <header>pyqtgraph.opengl.GLViewWidget</header>
+  </customwidget>
+  <customwidget>
+   <class>DictView</class>
+   <extends>QTableWidget</extends>
+   <header location="global">utils.suWidgets</header>
   </customwidget>
  </customwidgets>
  <resources>

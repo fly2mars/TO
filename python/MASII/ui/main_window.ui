@@ -247,30 +247,10 @@
       <rect>
        <x>450</x>
        <y>160</y>
-       <width>91</width>
+       <width>121</width>
        <height>22</height>
       </rect>
      </property>
-     <item>
-      <property name="text">
-       <string>&gt;</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>&lt;</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>=</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>func:=name</string>
-      </property>
-     </item>
     </widget>
     <widget class="QLineEdit" name="line_edit_state">
      <property name="enabled">
@@ -288,9 +268,9 @@
     <widget class="QLineEdit" name="line_edit_state_value">
      <property name="geometry">
       <rect>
-       <x>560</x>
+       <x>590</x>
        <y>160</y>
-       <width>81</width>
+       <width>51</width>
        <height>21</height>
       </rect>
      </property>

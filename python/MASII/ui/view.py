@@ -13,6 +13,7 @@ from PyQt5.QtCore import QBasicTimer
 
 from os import path
 from src.controller import Controller
+from src.sufact import FactOperator
 
 class Viewer(Ui_MainWindow):
     def __init__(self):
@@ -31,13 +32,13 @@ class Viewer(Ui_MainWindow):
         self.MainWindow = MainWindow
         Ui_MainWindow.setupUi(self,MainWindow)                            
      
-        self.load_config()    
-        
         # set logger window
         self.logger = WinLogger(self.text_console)
         self.logger.register_logger()            
         self._connect_signals(MainWindow)
         self.setFixedSize(self.size())
+        
+        self.load_config()   
         self.splash.close()  
         
     def _connect_signals(self, MainWindow):
@@ -68,6 +69,13 @@ class Viewer(Ui_MainWindow):
     def load_config(self):
         #self.controller.load_setting()            
         #self.refresh()
+        
+        #init view
+        ## init fact operators
+        fo = FactOperator()
+        operators = fo.get_operators()
+        self.comb_variable_to_fact_func.addItems(operators)
+            
         return
     
     def load_file(self):
